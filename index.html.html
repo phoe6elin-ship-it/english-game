@@ -1,0 +1,73 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Feelings Adventure｜英語學習扶助</title><style>
+:root{--ink:#20344b;--purple:#7056d8;--mint:#e5faf1;--cream:#fff9ed;--pink:#ffe8f0}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;background:linear-gradient(135deg,#eef8ff,#fff5eb);color:var(--ink);min-height:100vh}main{max-width:850px;margin:auto;padding:24px 18px 70px}.panel{background:#fff;border-radius:26px;box-shadow:0 12px 40px #273c5c14;padding:clamp(20px,4vw,38px);margin:16px 0}h1{font-size:clamp(30px,6vw,52px);margin:6px 0}h2{font-size:clamp(23px,4vw,32px);margin:4px 0 12px}.eyebrow{font-weight:800;color:var(--purple);letter-spacing:2px}.sub{color:#64758a;line-height:1.7}.hero{text-align:center}.emoji{font-size:80px;line-height:1.3;margin:14px}.btn{appearance:none;border:0;background:var(--purple);color:#fff;border-radius:15px;font-size:19px;font-weight:800;padding:15px 22px;cursor:pointer;min-height:54px}.btn.secondary{background:#eef0ff;color:#4d42a0}.btn:disabled{opacity:.5;cursor:default}.btn:focus-visible,.choice:focus-visible{outline:4px solid #ffb24d;outline-offset:3px}.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}.input{font-size:20px;padding:15px;border:2px solid #d9e2ef;border-radius:14px;width:min(100%,400px);text-align:center}.hide{display:none!important}.wordstrip{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px}.chip{padding:9px 12px;border-radius:99px;background:#f0efff;font-weight:700}.progress{height:13px;border-radius:20px;background:#e9edf6;overflow:hidden;margin:16px 0}.progress>div{height:100%;background:linear-gradient(90deg,#6dcab5,#8262ed);transition:width .3s}.topline{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:800}.badge{background:#fff3d3;color:#875700;border-radius:99px;padding:8px 14px}.scene{background:#f5f8ff;border-radius:20px;padding:20px;text-align:center;margin:18px 0}.scene p{font-size:clamp(19px,3.2vw,26px);font-weight:700;line-height:1.55;margin:8px 0}.hint{font-size:16px;color:#63728a;font-weight:400}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.choice{border:2px solid #e0e5f4;background:white;color:#273d5a;padding:17px 10px;border-radius:15px;font-size:clamp(18px,3vw,23px);font-weight:800;min-height:67px;cursor:pointer}.choice:hover{border-color:#8c77ed}.choice.correct{background:#dff8e8;border-color:#42b780}.choice.wrong{background:#ffe6e6;border-color:#ec7575}.feedback{font-size:20px;font-weight:800;text-align:center;margin-top:18px;min-height:30px}.speak{background:#e7f5ff;color:#225f91}.stars{font-size:38px;letter-spacing:5px}.answer-slots,.letter-bank{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}.slot{width:45px;height:54px;border:2px dashed #a7a5d8;border-radius:12px;display:grid;place-items:center;font-size:26px;font-weight:900;background:#f4f3ff}.letter{min-width:48px;min-height:54px;border:2px solid #b8b0ed;border-radius:12px;background:white;color:#382c7c;font-size:25px;font-weight:900;cursor:pointer}.letter:disabled{opacity:.25}.small{font-size:14px;color:#728097}.result{background:var(--cream);border-radius:20px;padding:22px;text-align:center}.foot{text-align:center;color:#738196;font-size:13px;margin-top:25px}@media(max-width:480px){.choices{gap:8px}.choice{min-height:60px}.panel{padding:18px}.emoji{font-size:64px}}@media print{.btn,.foot{display:none!important}body{background:white}.panel{box-shadow:none}}
+</style></head><body><main>
+<section id="start" class="panel hero"><div class="eyebrow">ENGLISH ADVENTURE</div><h1>How Do You Feel? 🌈</h1><p class="sub">四年級英語學習扶助｜五個感覺單字・10 題選擇＋5 題拼字</p><div class="emoji">🥱 🍔 🥤 😋 🥳</div><p><label for="student">請輸入你的姓名或座號</label></p><input id="student" class="input" maxlength="24" placeholder="例如：5號 小明" autocomplete="off"><div class="wordstrip"><span class="chip">tired</span><span class="chip">full</span><span class="chip">hungry</span><span class="chip">thirsty</span><span class="chip">excited</span></div><div class="actions"><button class="btn" id="begin">開始闖關 ▶</button><button class="btn secondary" id="share">分享遊戲網址 / QR</button></div><p class="small">可以按 🔊 聽英文；選擇題和拼字題交錯出現，完成即可獲得星星。</p><div id="qrbox" class="hide" style="margin-top:18px"><p>網頁公開發布後，學生掃描以下 QR Code 即可開啟：</p><div id="qrimg"></div><p id="shareurl" class="small" style="overflow-wrap:anywhere"></p></div></section>
+<section id="play" class="panel hide"><div class="topline"><span id="level">LEVEL 1</span><span id="count" class="badge">1 / 15</span></div><div class="progress"><div id="bar" style="width:0%"></div></div><h2 id="title">Feelings Quiz</h2><p id="instruction" class="sub">看情境，選出正確的英文單字。</p><div class="scene"><div class="emoji" id="picture">🍔</div><p id="prompt"></p><p class="hint hide" id="translation"></p><div class="actions"><button class="btn secondary speak" id="listen">🔊 聽英文</button><button class="btn secondary" id="hint">💡 中文提示</button></div></div><div class="choices" id="choices"></div><div id="spelling" class="hide"><div class="answer-slots" id="answerSlots" aria-label="目前拼出的單字"></div><div class="letter-bank" id="letterBank"></div><div class="actions"><button class="btn secondary" id="undo">↶ 退回一個字母</button><button class="btn secondary" id="clearLetters">清除重拼</button><button class="btn" id="checkSpell">確認拼字 ✓</button></div></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="btn hide">下一題 ➜</button></div></section>
+<section id="done" class="panel hide"><div class="hero"><div class="emoji">🏆</div><h1>Mission Complete!</h1><p id="who"></p><div class="result"><div class="stars" id="stars">⭐⭐⭐</div><h2 id="finalscore"></h2><p id="praise"></p><p id="levelscore"></p></div><p class="sub">現在試著說出：How do you feel? — I'm excited!</p><div class="actions"><button class="btn" id="again">再挑戰一次</button><button class="btn secondary" id="save">儲存成績圖片</button></div><p class="small">成績只保留在此裝置的遊戲畫面，不會自動傳送給老師。可將成績圖片交給老師。</p></div></section><div class="foot">Feelings Adventure · 學習扶助互動教材 · 無需帳號</div></main>
+<script>
+const vocab=['tired','full','hungry','thirsty','excited'];
+const base=[
+{emoji:'🥱',prompt:'想睡覺，一直打哈欠。',en:'I want to sleep.',zh:'疲倦的',answer:'tired'},
+{emoji:'🍱',prompt:'剛吃完大餐，吃不下了。',en:'I ate a big lunch.',zh:'吃飽的',answer:'full'},
+{emoji:'🍔',prompt:'肚子咕嚕叫，想吃東西。',en:'I want some food.',zh:'肚子餓的',answer:'hungry'},
+{emoji:'🥤',prompt:'運動完，很想喝水。',en:'I want some water.',zh:'口渴的',answer:'thirsty'},
+{emoji:'🥳',prompt:'明天要去校外教學，好期待！',en:'I can’t wait for the trip!',zh:'興奮的',answer:'excited'},
+{emoji:'🏀',prompt:'Tom plays basketball for two hours. He wants water.',en:'Tom plays basketball for two hours. He wants water.',zh:'Tom 打球兩小時後想喝水。',answer:'thirsty'},
+{emoji:'🌙',prompt:'Lisa goes to bed very late. She keeps yawning.',en:'Lisa goes to bed very late. She keeps yawning.',zh:'Lisa 很晚才睡，一直打哈欠。',answer:'tired'},
+{emoji:'🎢',prompt:'Ben will go to the amusement park tomorrow. He can’t wait!',en:'Ben will go to the amusement park tomorrow. He can’t wait!',zh:'Ben 明天要去遊樂園，非常期待。',answer:'excited'},
+{emoji:'🍜',prompt:'Amy eats two bowls of noodles. She doesn’t want more.',en:'Amy eats two bowls of noodles. She doesn’t want more.',zh:'Amy 吃了兩碗麵，不想再吃。',answer:'full'},
+{emoji:'🥪',prompt:'Jack didn’t eat breakfast. He wants a sandwich.',en:'Jack didn’t eat breakfast. He wants a sandwich.',zh:'Jack 沒吃早餐，想吃三明治。',answer:'hungry'}
+];
+// 混合題型：每兩道選擇題後加入一道拼字題，共 15 題。
+const spellingOrder=['tired','hungry','thirsty','full','excited'];
+const questions=[];
+for(let i=0;i<5;i++){
+  questions.push({...base[i*2],type:'choice'});
+  questions.push({...base[i*2+1],type:'choice'});
+  const match=base.find(x=>x.answer===spellingOrder[i]);
+  questions.push({...match,type:'spell',prompt:'聽發音、看提示，把字母排成正確的單字。'});
+}
+let n=0,score=0,choiceScore=0,spellScore=0,locked=false,student='',chosen=[];
+const $=id=>document.getElementById(id);
+function show(id){['start','play','done'].forEach(x=>$(x).classList.toggle('hide',x!==id))}
+function speak(t){if(!('speechSynthesis' in window)){alert('此瀏覽器不支援語音播放');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.78;speechSynthesis.speak(u)}
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function render(){
+ locked=false;chosen=[];const x=questions[n],spell=x.type==='spell';
+ $('level').textContent=spell?'SPELLING · 拼字挑戰':n<8?'LEVEL 1 · 單字選擇':'LEVEL 2 · 情境選擇';
+ $('title').textContent=spell?'Spell the Feeling!':n<8?'Feelings Quiz':'Situation Detective';
+ $('instruction').textContent=spell?'點選下方字母，依序拼出正確的英文單字。':'看圖片與情境，選出正確的感覺單字。';
+ $('count').textContent=`${n+1} / ${questions.length}`;
+ $('bar').style.width=(n/questions.length*100)+'%';
+ $('picture').textContent=x.emoji;$('prompt').textContent=x.prompt;
+ $('translation').textContent=x.zh;$('translation').classList.add('hide');$('hint').textContent='💡 中文提示';
+ $('feedback').textContent='';$('next').classList.add('hide');
+ $('choices').classList.toggle('hide',spell);$('spelling').classList.toggle('hide',!spell);
+ $('choices').replaceChildren();
+ if(spell){
+   const letters=shuffle([...x.answer].map((ch,i)=>({ch,id:i})));
+   $('letterBank').replaceChildren();
+   letters.forEach(item=>{const b=document.createElement('button');b.className='letter';b.textContent=item.ch;b.type='button';b.dataset.letterId=item.id;b.onclick=()=>{if(locked||b.disabled)return;b.disabled=true;chosen.push({ch:item.ch,id:item.id});drawSlots()};$('letterBank').append(b)});
+   drawSlots();
+ }else{
+   shuffle([...vocab]).forEach(w=>{const b=document.createElement('button');b.className='choice';b.textContent=w;b.onclick=()=>answerChoice(w,b);$('choices').append(b)})
+ }
+ show('play');
+}
+function drawSlots(){const x=questions[n];$('answerSlots').replaceChildren();for(let i=0;i<x.answer.length;i++){const d=document.createElement('div');d.className='slot';d.textContent=chosen[i]?.ch||'';$('answerSlots').append(d)}}
+function undo(){if(locked||!chosen.length)return;const item=chosen.pop();const b=[...$('letterBank').children].find(el=>Number(el.dataset.letterId)===item.id);if(b)b.disabled=false;drawSlots()}
+function clearLetters(){if(locked)return;chosen=[];[...$('letterBank').children].forEach(b=>b.disabled=false);drawSlots()}
+function completed(ok){locked=true;const x=questions[n];if(ok){score++;if(x.type==='spell')spellScore++;else choiceScore++}speak('I am '+x.answer);$('feedback').textContent=ok?'🌟 Excellent! I’m '+x.answer+'.':'💪 Good try! 正確答案：'+x.answer+'.';$('next').classList.remove('hide');$('next').textContent=n===questions.length-1?'查看成績 🏆':'下一題 ➜'}
+function answerChoice(w,b){if(locked)return;const ok=w===questions[n].answer;b.classList.add(ok?'correct':'wrong');if(!ok)[...$('choices').children].find(el=>el.textContent===questions[n].answer).classList.add('correct');completed(ok)}
+function checkSpelling(){if(locked)return;const x=questions[n];if(chosen.length!==x.answer.length){$('feedback').textContent='請先排好所有字母！';return}const ok=chosen.map(c=>c.ch).join('')===x.answer;[...$('answerSlots').children].forEach(el=>el.style.borderColor=ok?'#42b780':'#ec7575');completed(ok)}
+function finish(){const total=questions.length;$('who').textContent=student+'，你完成挑戰了！';$('finalscore').textContent=score+' / '+total+' 分';$('stars').textContent=score>=14?'⭐⭐⭐⭐⭐':score>=11?'⭐⭐⭐⭐':score>=8?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';$('praise').textContent=score>=14?'Amazing! 你是 Feelings 高手！':score>=9?'Great job! 繼續加油！':'Good effort! 再玩一次會更進步！';$('levelscore').textContent=`選擇題 ${choiceScore}/10　｜　拼字題 ${spellScore}/5`;show('done')}
+function restart(){n=0;score=0;choiceScore=0;spellScore=0;render()}
+$('begin').onclick=()=>{student=$('student').value.trim()||'同學';restart()};
+$('next').onclick=()=>{if(n===questions.length-1)finish();else{n++;render()}};
+$('hint').onclick=()=>{$('translation').classList.toggle('hide');$('hint').textContent=$('translation').classList.contains('hide')?'💡 中文提示':'隱藏提示'};
+$('listen').onclick=()=>speak(questions[n].type==='spell'?questions[n].answer:questions[n].en);
+$('undo').onclick=undo;$('clearLetters').onclick=clearLetters;$('checkSpell').onclick=checkSpelling;
+$('again').onclick=restart;
+$('save').onclick=()=>{const c=document.createElement('canvas');c.width=900;c.height=580;const ctx=c.getContext('2d');ctx.fillStyle='#f5f2ff';ctx.fillRect(0,0,900,580);ctx.fillStyle='#27344d';ctx.textAlign='center';ctx.font='bold 52px sans-serif';ctx.fillText('Feelings Adventure',450,105);ctx.font='36px sans-serif';ctx.fillText(student,450,185);ctx.font='bold 85px sans-serif';ctx.fillText(score+' / 15',450,305);ctx.font='30px sans-serif';ctx.fillText(`Quiz: ${choiceScore}/10    Spelling: ${spellScore}/5`,450,390);ctx.font='25px sans-serif';ctx.fillText('How do you feel?  I’m excited!',450,475);const a=document.createElement('a');a.download='Feelings_成績.png';a.href=c.toDataURL('image/png');a.click()};
+$('share').onclick=()=>{const url=location.href;if(location.protocol==='file:'){$('qrbox').classList.remove('hide');$('qrimg').textContent='請先把 HTML 檔發布到公開網址，才可以產生供學生掃描的 QR Code。';$('shareurl').textContent='目前開啟的是本機檔案，無法由其他 iPad 連線。';return}$('qrbox').classList.remove('hide');$('shareurl').textContent=url;const img=document.createElement('img');img.alt='遊戲網址 QR Code';img.width=210;img.height=210;img.src='https://api.qrserver.com/v1/create-qr-code/?size=210x210&data='+encodeURIComponent(url);$('qrimg').replaceChildren(img);if(navigator.share)navigator.share({title:'Feelings Adventure',url}).catch(()=>{})};
+</script></body></html>
